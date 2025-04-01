@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 
 const SuccessUnreg = () => {
   const { name } = useParams(); // Access the 'name' parameter
+  const firstName = name.split(' ')[0];
 
   return (
     <div>
         <div className='m-4 rounded-full'>
-        <h1 className="keyboard text-center text-[40px] mt-12 mb-[-8px]">Hello {name}!</h1>
+        <h1 className="keyboard text-center text-[40px] mt-12 mb-[-8px]">Hello {firstName}!</h1>
         <h1 class="mb-4 text-center text-2xl font-extrabold text-gray-500 ">Welcome to icewarp event</h1>
 
         
