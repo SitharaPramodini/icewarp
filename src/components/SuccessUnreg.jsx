@@ -17,7 +17,7 @@ const SuccessUnreg = () => {
 
 
 
-<p className='text-center text-gray-500'>please follow us to receive the door gift
+<p className='text-center text-gray-500 mt-12'>please follow us to receive the door gift
 
 <div class="flex justify-center">
     <a href='https://www.linkedin.com/company/fentons-information-technology/posts/?feedView=all'>
