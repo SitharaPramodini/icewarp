@@ -108,12 +108,8 @@ function Home() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if(phoneNumber==='0757887433'){
-            navigate(`/unreg/${name}`)
-        } else{
-            navigate('/otp');
-        }
-       
+  
+        navigate(`/unreg/${name}`)
         // const formData = new FormData();
         // formData.append("name", name);
         // formData.append("nic", nic);
