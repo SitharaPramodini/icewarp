@@ -391,9 +391,9 @@ function Home() {
 
 
                 </form>
-                <p className="fixed bottom-0 w-full text-center py-2 text-gray-400">
+                {/* <p className="fixed bottom-0 w-full text-center py-2 text-gray-400">
                     SmartConnect product
-                </p>
+                </p> */}
 
             </div>
 
