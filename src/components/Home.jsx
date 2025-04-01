@@ -281,30 +281,6 @@ function Home() {
                             <div class="text-sm text-slate-500 mt-4">Didn't receive code? <a class="font-medium text-[#791c97] hover:text-[#791c80]" href="#0">Resend</a></div>
                         </div>
 
-{/* if(phoneNumber==='0756778988') */}
-                        {capturedImage ? (
-                                    <div className="flex flex-row items-center gap-6">
-                                        <img src={capturedImage} alt="Captured" className="w-auto h-40 my-4" />
-                                        <button
-                                            onClick={openCamera}
-                                            className="text-white bg-[#00000033] hover:bg-gray-600 p-2.5 rounded-full"
-                                            type="button"
-                                        >
-                                            <IoMdReverseCamera />
-                                        </button>
-                                    </div>
-                                ) : (
-                                    <div className="flex items-center justify-between">
-                                        <p className="text-sm text-gray-400">Take your photo</p>
-                                        <button
-                                            onClick={openCamera}
-                                            className="bg-[#00000033] rounded-full w-auto p-3"
-                                            type="button"
-                                        >
-                                            <FaCamera />
-                                        </button>
-                                    </div>
-                                )}
                 </div>
                     )}
 
