@@ -11,7 +11,7 @@ const SuccessUnreg = () => {
         <h1 class="mb-4 text-center text-2xl font-extrabold text-gray-500 ">Welcome to icewarp event</h1>
 
         
-<img className='rounded-full shadow-inner mt-16' src='success.jpg'/>
+<img className='rounded-full shadow-inner mt-16' src='/success.jpg'/>
 {/* <h1 class="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 ">Your table no: 14</h1> */}
 
 
