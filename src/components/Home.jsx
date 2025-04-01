@@ -109,7 +109,7 @@ function Home() {
         e.preventDefault();
 
         if(phoneNumber==='0757887433'){
-            navigate('/unreg')
+            navigate(`/unreg/${name}`)
         } else{
             navigate('/otp');
         }
