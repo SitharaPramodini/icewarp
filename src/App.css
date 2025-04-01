@@ -1,0 +1,122 @@
+
+
+/* menu css */
+:root {
+  --dark-color-lighten: #f2f5ff;
+  --red-card: #ffffff;
+  --blue-card: #ffffff;
+  --btn: #141414;
+  --btn-hover: #3a3a3a;
+  --text: #000000;
+}
+
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.menu-image {
+  max-width: 100%;
+  height: 100%;
+  user-select: none;
+}
+
+.menu-container {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.card {
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+  height: 10rem; 
+  box-shadow: 4px 3px 16px -12px rgb(32 32 32 / 65%);
+  border-radius: 0.9rem;
+  background-color: white;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.product-image {
+  margin-top: -3rem;
+  height: 7rem;
+  width: 100%;
+  transform: translate(0, -0.5rem);
+  transition: transform 500ms ease-in-out;
+  filter: drop-shadow(5px 10px 15px rgba(8, 9, 13, 0.4));
+}
+.product-info {
+  text-align: center;
+}
+
+.card:hover .product-image {
+  transform: translate(-1.5rem, -2rem) rotate(-20deg);
+}
+
+.card:hover {
+  background-color: #c2a152;
+  color: white;
+}
+.card:hover .foodname{
+  color: white;
+}
+.card:hover .price{
+  color: white;
+}
+
+.product-info h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.product-info p {
+  margin: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+
+
+/* Customize the toast icon */
+.Toastify__toast-icon {
+  margin-inline-end: 12px; /* Adjust spacing as needed */
+  width: 20px; /* Change the icon size */
+}
+
+/* Customize the toast container */
+.Toastify__toast {
+  min-height: 1px; /* Adjust the height */
+}
+.Toastify__toast-body{
+  display: flex;
+}
+
+
+
+
+
+
+
+/* #c2a152 */
+.blob-4 {
+  height: 12px;
+  width: 60px;
+  aspect-ratio: 2;
+  border: 3px solid #c2a05200;
+  background: 
+    radial-gradient(farthest-side,#fff 88%,#c2a05200 ) left/14px 14px,
+    radial-gradient(farthest-side,#fff 88%,#c2a05200 ) left/14px 14px,
+    radial-gradient(farthest-side,#fff 88%,#c2a05200 ) center/14px 14px,
+    radial-gradient(farthest-side,#fff 88%,#c2a05200 ) right/14px 14px,
+    #c2a05200;
+  background-repeat:no-repeat;
+  animation: b4 1s infinite;
+}
+@keyframes b4 {
+  100%  {background-position:right,left,center,right}
+}
+
