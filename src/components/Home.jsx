@@ -199,8 +199,33 @@ function Home() {
                         </div> */}
                     </div>
 
-                    <div className="relative z-0 w-full mb-5 group flex flex-row gap-x-2 items-center">
-                        <input
+                    <div className="relative z-0 w-full mb-5 group flex flex-col gap-x-2">
+                        
+                    <label for="zip-input" class="block mb-2 text-sm font-medium text-gray-700 ">Enter your registered phone number</label>
+    <div class="relative w-full flex items-center">
+        <div class="absolute mt-2 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+            <h1 class=" w-4 h-4 text-gray-500 dark:text-gray-400" >
+            +94</h1>
+        </div>
+        <input 
+        value={phoneNumber}
+        onChange={(e) => setPhoneNumber(e.target.value)}
+        required
+        disabled={otpSent}
+        type="text" id="zip-input" aria-describedby="helper-text-explanation" 
+        class=" w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-800 focus:border-purring-purple-800 block ps-16 p-2.5  " placeholder="7X XXX XXXX" pattern="^\d{5}(-\d{4})?$" />
+    
+    {otpCorrect && (
+                            <div className="flex items-center justify-center mt-2 ml-2 z-50 right-2 ">
+                                <span className="text-green-500 text-2xl mb-2"><RiVerifiedBadgeFill /></span>
+                                {/* <p className="ml-2">OTP verified</p> */}
+                            </div>
+                        )}
+
+    </div>
+
+                        
+                        {/* <input
                             type="tel"
                             pattern="[0-9]{10}"
                             name="floating_phone"
@@ -219,15 +244,8 @@ function Home() {
                         >
                             Enter your registered phone number
 
-                        </label>
-                        {otpCorrect && (
-                            <div className="flex items-center justify-center mt-4 z-50 right-2 ">
-                                <span className="text-green-500 text-2xl mb-2"><RiVerifiedBadgeFill /></span>
-                                {/* <p className="ml-2">OTP verified</p> */}
-                            </div>
-                        )}
-
-                        
+                        </label> */}
+              
                     </div>
 
                     {!otpSent && !otpCorrect && (
