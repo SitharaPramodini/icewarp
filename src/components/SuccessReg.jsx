@@ -8,7 +8,7 @@ const SuccessReg = () => {
         <h1 class="mb-4 text-center text-2xl font-medium text-gray-500 font-[Roboto] mt-4">Welcome to icewarp event</h1>
 
 
-        <img className='mt-16' src='success-r.png' />
+        <img className='mt-16 w-64 mx-auto' src='success-r.png' />
         <h1 class="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto] ">Your table no: 10</h1>
 
 
