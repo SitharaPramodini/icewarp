@@ -118,7 +118,7 @@ function Home() {
                         },
                         body: JSON.stringify({
                             MOBILE_NO: phoneNumber,
-                            OTP_STATE: 1
+                            OTP_STATE:1
                         }),
                     });
 
@@ -305,17 +305,15 @@ function Home() {
                                 }}
                                 required
                                 disabled={otpSent}
-                                type="text" // Use text instead of number
-                                inputMode="numeric" // Suggests numeric keyboard on mobile
-                                pattern="[0-9]*" // Ensures only numbers are allowed
+                                type="number"
                                 id="zip-input"
                                 aria-describedby="helper-text-explanation"
                                 className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
                                 placeholder="7X XXX XXXX"
-                                maxLength={10} // Works with type="text"
+                                maxLength={10}
+                                pattern="^\d{10}$"
                             />
-
 
                             {otpCorrect && (
                                 <div className="flex items-center justify-center mt-2 ml-2 z-50 right-2 ">
@@ -359,7 +357,7 @@ function Home() {
                                 <form id="otp-form">
                                     <div class="flex items-center justify-center gap-3">
                                         <input
-                                            type="text"
+                                            type="text" // Changed from "number" to "text"
                                             value={enteredOtp}
                                             onChange={(e) => {
                                                 const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
@@ -370,11 +368,9 @@ function Home() {
                                             className="border w-4/5 p-2 rounded border-gray-300 focus:ring-[#791c97] focus:ring-0"
                                             placeholder="Enter OTP"
                                             maxLength={6} // Restricts input to 6 characters
-                                            inputMode="numeric" // Opens numeric keyboard on mobile
-                                            pattern="[0-9]{6}" // Ensures exactly 6 digits on form submission
+                                            pattern="^\d{6}$"
                                             required
                                         />
-
 
                                     </div>
                                     <div class="max-w-[260px] mx-auto mt-4">
