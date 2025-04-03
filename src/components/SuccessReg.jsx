@@ -12,7 +12,7 @@ const SuccessReg = () => {
           Welcome to Icewarp event
         </h1>
 
-        <img className='mt-12 mx-auto w-40' src='/icon1.png' alt="Success" />
+        <img className='mt-12 mx-auto w-40' src='/icon1.png' alt="icon" />
         <img className=' mx-auto md:w-72' src='/success.gif' alt="Success" />
 
         {TABLE_NUMBER && TABLE_NUMBER !== "null" ? (
