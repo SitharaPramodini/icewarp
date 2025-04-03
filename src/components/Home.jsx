@@ -134,7 +134,7 @@ function Home() {
                             headers: { "Content-Type": "application/json" },
                             body: JSON.stringify({
                                 mobile: phoneNumber,
-                                message: `Thankyou for your participate. Your table number is ${data.data.TABLE_NUMBER}`,
+                                message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nYour table number is ${data.data.TABLE_NUMBER}`,
                             }),
                         });
 
@@ -231,7 +231,7 @@ function Home() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     mobile: phoneNumber,
-                    message: `Thankyou for your participate. sit with your colleague`,
+                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\n sit with your colleague`,
                 }),
             });
 
@@ -309,7 +309,7 @@ function Home() {
                                 id="zip-input"
                                 aria-describedby="helper-text-explanation"
                                 className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-               focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
+                              focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
                                 placeholder="7X XXX XXXX"
                                 maxLength={10}
                                 pattern="^\d{10}$"
@@ -334,7 +334,7 @@ function Home() {
                             <button
                                 onClick={handlePhoneNumberSubmit}
                                 className="mt-8 w-full text-white bg-[#791c97] hover:bg-[#791c80] font-medium rounded-lg text-sm px-5 py-2.5"
-                                disabled={sendingOtp || phoneNumber.length !== 10 || phoneNumber.length !== 9 }
+                                disabled={sendingOtp || phoneNumber.length < 9}
                             >
                                 {sendingOtp ? "Submitting..." : "Submit"}
                             </button>
