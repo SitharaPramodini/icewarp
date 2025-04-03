@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import Header from "./Header.js";
+import Header from "./Header.jsx";
 import Webcam from "react-webcam";
 import { IoMdReverseCamera } from "react-icons/io";
 import { FaCamera } from "react-icons/fa6";
-import CameraOverlay from "./CameraOverlay.js";
+import CameraOverlay from "./CameraOverlay.jsx";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -72,7 +72,7 @@ function Home() {
             if (data?.data && data.data.OTP_STATE === 1) {
                 navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
             }            
-
+else{
             const response = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -89,6 +89,7 @@ function Home() {
             } else {
                 toast.error("Failed to send OTP");
             }
+        }
         } catch (error) {
             console.error("Error sending OTP:", error);
             toast.error("An error occurred while sending OTP");
@@ -126,6 +127,16 @@ function Home() {
                     if (updateResult.status === "success") {
                         console.log("OTP verified and updated successfully!");
                         navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
+
+                        const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                mobile: phoneNumber,
+                                message: `Thankyou for your participate. Your table number is ${data.data.TABLE_NUMBER}`,
+                            }),
+                        });
+
                     } else {
                         console.error("Failed to update OTP state.");
                     }
@@ -213,6 +224,15 @@ function Home() {
                 body: JSON.stringify(requestData),
             });
             navigate(`/reg/${name}/null`);
+            
+            const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    mobile: phoneNumber,
+                    message: `Thankyou for your participate. sit with your colleague`,
+                }),
+            });
 
             // Log the raw response before trying to parse it
             const textResponse = await response.text();
@@ -305,7 +325,7 @@ function Home() {
                                 className="mt-8 w-full text-white bg-[#791c97] hover:bg-[#791c80] font-medium rounded-lg text-sm px-5 py-2.5"
                                 disabled={sendingOtp}
                             >
-                                {sendingOtp ? "Sending..." : "Send OTP"}
+                                {sendingOtp ? "submitting..." : "Submit"}
                             </button>
 
                         </div>
