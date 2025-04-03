@@ -342,7 +342,7 @@ function Home() {
                                 className="mt-8 w-full text-white bg-[#791c97] hover:bg-[#791c80] font-medium rounded-lg text-sm px-5 py-2.5"
                                 disabled={sendingOtp}
                             >
-                                {sendingOtp ? "submitting..." : "Submit"}
+                                {sendingOtp ? "Please wait..." : "Submit"}
                             </button>
 
                         </div>
