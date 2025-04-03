@@ -12,8 +12,8 @@ const SuccessReg = () => {
           Welcome to Icewarp event
         </h1>
 
-        <img className='mt-12 mx-auto w-40' src='/icewarp/icon1.png' alt="Success" />
-        <img className=' mx-auto md:w-72' src='/icewarp/success.gif' alt="Success" />
+        <img className='mt-12 mx-auto w-40' src='/icon1.png' alt="Success" />
+        <img className=' mx-auto md:w-72' src='/success.gif' alt="Success" />
 
         {TABLE_NUMBER && TABLE_NUMBER !== "null" ? (
           <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto]">
