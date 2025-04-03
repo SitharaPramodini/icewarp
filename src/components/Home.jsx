@@ -69,9 +69,9 @@ function Home() {
             const responseStatus = await fetch(`https://apps.hayleysfentons.com/icewarp/API/client.php?MOBILE_NO=${phoneNumber}`);
             const data = await responseStatus.json();
 
-            if (data?.data?.OTP_STATE !== undefined && data.data.OTP_STATE === 1) {
-                navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
-            }
+            if (data?.data && data.data.OTP_STATE === 1) {
+                navigate(`/icewarp/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
+            }            
 
             const response = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
                 method: "POST",
@@ -116,7 +116,7 @@ function Home() {
                         },
                         body: JSON.stringify({
                             MOBILE_NO: phoneNumber,
-                            OTP_STATE: 1
+                            
                         }),
                     });
     
@@ -124,10 +124,10 @@ function Home() {
                     console.log("OTP_STATE Update Response:", updateResult);
     
                     if (updateResult.status === "success") {
-                        toast.success("OTP verified and updated successfully!");
-                        navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
+                        console.log("OTP verified and updated successfully!");
+                        navigate(`/icewarp/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
                     } else {
-                        toast.error("Failed to update OTP state.");
+                        console.error("Failed to update OTP state.");
                     }
                 }
     
@@ -198,7 +198,8 @@ function Home() {
             CLIENT_COMPANY: company,
             DESIGNATION: designation,
             EVENT_ID: 1,
-            COMPANY_ID: 1
+            COMPANY_ID: 1,
+            OTP_STATE: 1
         };
     
         console.log("Sending request:", requestData);
@@ -211,7 +212,7 @@ function Home() {
                 },
                 body: JSON.stringify(requestData),
             });
-            navigate(`/reg/${name}/null`);
+            navigate(`/icewarp/reg/${name}/null`);
 
             // Log the raw response before trying to parse it
             const textResponse = await response.text();

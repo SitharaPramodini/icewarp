@@ -10,9 +10,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reg/:CLIENT_NAME/:TABLE_NUMBER" element={<SuccessReg />} />
-        <Route path="/unreg/:name" element={<SuccessUnreg />} />
+        <Route path="/icewarp/" element={<Home />} />
+        <Route path="/icewarp/reg/:CLIENT_NAME/:TABLE_NUMBER" element={<SuccessReg />} />
+        <Route path="/icewarp/unreg/:name" element={<SuccessUnreg />} />
       </Routes>
     </BrowserRouter>
   );
