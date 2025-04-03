@@ -70,7 +70,7 @@ function Home() {
             const data = await responseStatus.json();
 
             if (data?.data && data.data.OTP_STATE === 1) {
-                navigate(`/icewarp/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
+                navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
             }            
 
             const response = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
@@ -125,7 +125,7 @@ function Home() {
     
                     if (updateResult.status === "success") {
                         console.log("OTP verified and updated successfully!");
-                        navigate(`/icewarp/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
+                        navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
                     } else {
                         console.error("Failed to update OTP state.");
                     }
@@ -212,7 +212,7 @@ function Home() {
                 },
                 body: JSON.stringify(requestData),
             });
-            navigate(`/icewarp/reg/${name}/null`);
+            navigate(`/reg/${name}/null`);
 
             // Log the raw response before trying to parse it
             const textResponse = await response.text();
