@@ -277,7 +277,7 @@ function Web() {
             />
             <div
                 className={`container ${otpSent ? "mt-[18rem]" : "mt-[24rem]"
-                    } max-w-full pt-3 pb-14 bg-[#f8f8ff] w-full absolute rounded-t-3xl h-auto`}
+                    } mx-24 pt-3 pb-14 bg-[#f8f8ff] w-full absolute rounded-t-3xl h-auto`}
             >
                 {!otpCorrect && (
                     <h1 class="keyboard text-center mt-[10px] text-[35px]">Ready to explore?</h1>
