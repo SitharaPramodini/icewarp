@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import Header from "./Header.jsx";
+import Header from "./Header.js";
 import Webcam from "react-webcam";
 import { IoMdReverseCamera } from "react-icons/io";
 import { FaCamera } from "react-icons/fa6";
-import CameraOverlay from "./CameraOverlay.jsx";
+import CameraOverlay from "./CameraOverlay.js";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
