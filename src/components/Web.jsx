@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 
-function Home() {
+function Web() {
     const webcamRef = useRef(null);
     const [capturedImage, setCapturedImage] = useState(null);
     const [showCamera, setShowCamera] = useState(false);
@@ -489,4 +489,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Web;
