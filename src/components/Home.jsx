@@ -65,11 +65,14 @@ function Home() {
         const generatedOtp = generateOtp();
         setOtp(generatedOtp); // Save OTP in state
 
+        // console.log(generatedOtp)
+
         try {
             const responseStatus = await fetch(`https://apps.hayleysfentons.com/icewarp/API/client.php?MOBILE_NO=${phoneNumber}`);
             const data = await responseStatus.json();
 
             if (data?.data && data.data.OTP_STATE === 1) {
+                console.log(data.data.TABLE_NUMBER)
                 navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
             }
             else {
@@ -86,6 +89,7 @@ function Home() {
                     setOtpSent(true);
                     setShowOtpInput(true);
                     toast.success("OTP sent to " + phoneNumber);
+                    console.log("otp set")
                 } else {
                     toast.error("Failed to send OTP");
                 }
@@ -108,7 +112,7 @@ function Home() {
                 const response = await fetch(`https://apps.hayleysfentons.com/icewarp/API/client.php?MOBILE_NO=${phoneNumber}`);
                 const data = await response.json();
 
-                console.log(data.status, data.data?.CLIENT_NAME)
+                console.log("data is : ",data)
                 if (data.status === "success" && data.data?.CLIENT_NAME) {
                     // Update OTP_STATE to 1
                     const updateResponse = await fetch("https://apps.hayleysfentons.com/icewarp/API/client.php", {
@@ -118,7 +122,7 @@ function Home() {
                         },
                         body: JSON.stringify({
                             MOBILE_NO: phoneNumber,
-                            OTP_STATE: 1
+                            OTP_STATE:1
                         }),
                     });
 
@@ -231,7 +235,7 @@ function Home() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     mobile: phoneNumber,
-                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\n sit with your colleague`,
+                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\nSit with your colleague`,
                 }),
             });
 
@@ -296,24 +300,26 @@ function Home() {
                                     +94</h1>
                             </div>
                             <input
-                                value={phoneNumber}
-                                onChange={(e) => {
-                                    const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-                                    if (inputVal.length <= 10) {
-                                        setPhoneNumber(inputVal);
-                                    }
-                                }}
-                                required
-                                disabled={otpSent}
-                                type="number"
-                                id="zip-input"
-                                aria-describedby="helper-text-explanation"
-                                className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                              focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
-                                placeholder="7X XXX XXXX"
-                                maxLength={10}
-                                pattern="^\d{10}$"
-                            />
+    value={phoneNumber}
+    onChange={(e) => {
+        const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        if (inputVal.length <= 10) {
+            setPhoneNumber(inputVal);
+        }
+    }}
+    required
+    disabled={otpSent}
+    type="text" // Use text instead of number
+    inputMode="numeric" // Suggests numeric keyboard on mobile
+    pattern="[0-9]*" // Ensures only numbers are allowed
+    id="zip-input"
+    aria-describedby="helper-text-explanation"
+    className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+               focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
+    placeholder="7X XXX XXXX"
+    maxLength={10} // Works with type="text"
+/>
+
 
                             {otpCorrect && (
                                 <div className="flex items-center justify-center mt-2 ml-2 z-50 right-2 ">
@@ -334,10 +340,11 @@ function Home() {
                             <button
                                 onClick={handlePhoneNumberSubmit}
                                 className="mt-8 w-full text-white bg-[#791c97] hover:bg-[#791c80] font-medium rounded-lg text-sm px-5 py-2.5"
-                                disabled={sendingOtp || phoneNumber.length < 9}
+                                disabled={sendingOtp}
                             >
-                                {sendingOtp ? "Please wait..." : "Submit"}
+                                {sendingOtp ? "submitting..." : "Submit"}
                             </button>
+
                         </div>
                     )}
 
@@ -355,21 +362,23 @@ function Home() {
                                 </header>
                                 <form id="otp-form">
                                     <div class="flex items-center justify-center gap-3">
-                                        <input
-                                            type="text" // Changed from "number" to "text"
-                                            value={enteredOtp}
-                                            onChange={(e) => {
-                                                const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
-                                                if (inputVal.length <= 6) {
-                                                    setEnteredOtp(inputVal);
-                                                }
-                                            }}
-                                            className="border w-4/5 p-2 rounded border-gray-300 focus:ring-[#791c97] focus:ring-0"
-                                            placeholder="Enter OTP"
-                                            maxLength={6} // Restricts input to 6 characters
-                                            pattern="^\d{6}$"
-                                            required
-                                        />
+                                    <input
+    type="text"
+    value={enteredOtp}
+    onChange={(e) => {
+        const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        if (inputVal.length <= 6) {
+            setEnteredOtp(inputVal);
+        }
+    }}
+    className="border w-4/5 p-2 rounded border-gray-300 focus:ring-[#791c97] focus:ring-0"
+    placeholder="Enter OTP"
+    maxLength={6} // Restricts input to 6 characters
+    inputMode="numeric" // Opens numeric keyboard on mobile
+    pattern="[0-9]{6}" // Ensures exactly 6 digits on form submission
+    required
+/>
+
 
                                     </div>
                                     <div class="max-w-[260px] mx-auto mt-4">
