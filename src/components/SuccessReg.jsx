@@ -1,15 +1,29 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 
 const SuccessReg = () => {
+
+  const { CLIENT_NAME } = useParams();
+  const { TABLE_NUMBER } = useParams();
+
   return (
     <div className=''>
       <div className='m-4 rounded-full'>
-        <h1 className="keyboard text-center text-[30px] mt-12">Hello Buddhini!</h1>
+        <h1 className="keyboard text-center text-[30px] mt-12">Hello {CLIENT_NAME}!</h1>
         <h1 class="mb-4 text-center text-2xl font-medium text-gray-500 font-[Roboto] mt-4">Welcome to icewarp event</h1>
 
 
-        <img className='mt-16 mx-auto' src='success.gif' />
-        <h1 class="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto] ">Your table no: 10</h1>
+        <img className='mt-16 mx-auto' src='/success.gif' />
+
+        {TABLE_NUMBER === null ? (
+          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto]">
+            Your table no: {TABLE_NUMBER}
+          </h1>
+        ) : (
+          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto]">
+            Sit with your colleague
+          </h1>
+        )}
 
 
 

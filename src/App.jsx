@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reg" element={<SuccessReg />} />
+        <Route path="/reg/:CLIENT_NAME/:TABLE_NUMBER" element={<SuccessReg />} />
         <Route path="/unreg/:name" element={<SuccessUnreg />} />
       </Routes>
     </BrowserRouter>
