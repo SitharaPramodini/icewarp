@@ -118,7 +118,7 @@ function Home() {
                         },
                         body: JSON.stringify({
                             MOBILE_NO: phoneNumber,
-                            OTP_STATE:1
+                            OTP_STATE: 1
                         }),
                     });
 
@@ -334,9 +334,9 @@ function Home() {
                             <button
                                 onClick={handlePhoneNumberSubmit}
                                 className="mt-8 w-full text-white bg-[#791c97] hover:bg-[#791c80] font-medium rounded-lg text-sm px-5 py-2.5"
-                                disabled={sendingOtp}
+                                disabled={sendingOtp || phoneNumber.length !== 10 || phoneNumber.length !== 9 }
                             >
-                                {sendingOtp ? "submitting..." : "Submit"}
+                                {sendingOtp ? "Submitting..." : "Submit"}
                             </button>
 
                         </div>
