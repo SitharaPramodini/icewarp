@@ -71,25 +71,25 @@ function Home() {
 
             if (data?.data && data.data.OTP_STATE === 1) {
                 navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
-            }            
-else{
-            const response = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    mobile: phoneNumber,
-                    message: `Your OTP is ${generatedOtp}`,
-                }),
-            });
-
-            if (response.ok) {
-                setOtpSent(true);
-                setShowOtpInput(true);
-                toast.success("OTP sent to " + phoneNumber);
-            } else {
-                toast.error("Failed to send OTP");
             }
-        }
+            else {
+                const response = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        mobile: phoneNumber,
+                        message: `Your OTP is ${generatedOtp}`,
+                    }),
+                });
+
+                if (response.ok) {
+                    setOtpSent(true);
+                    setShowOtpInput(true);
+                    toast.success("OTP sent to " + phoneNumber);
+                } else {
+                    toast.error("Failed to send OTP");
+                }
+            }
         } catch (error) {
             console.error("Error sending OTP:", error);
             toast.error("An error occurred while sending OTP");
@@ -101,29 +101,30 @@ else{
 
     const handleOtpSubmit = async (e) => {
         e.preventDefault();
-    
+
         if (enteredOtp === String(otp)) { // Compare with stored OTP
             try {
                 // Fetch client data
                 const response = await fetch(`https://apps.hayleysfentons.com/icewarp/API/client.php?MOBILE_NO=${phoneNumber}`);
                 const data = await response.json();
-    
+
+                console.log(data.status, data.data?.CLIENT_NAME)
                 if (data.status === "success" && data.data?.CLIENT_NAME) {
                     // Update OTP_STATE to 1
                     const updateResponse = await fetch("https://apps.hayleysfentons.com/icewarp/API/client.php", {
-                        method: "POST",
+                        method: "PUT",
                         headers: {
                             "Content-Type": "application/json",
                         },
                         body: JSON.stringify({
                             MOBILE_NO: phoneNumber,
-                            
+                            OTP_STATE:1
                         }),
                     });
-    
+
                     const updateResult = await updateResponse.json();
                     console.log("OTP_STATE Update Response:", updateResult);
-    
+
                     if (updateResult.status === "success") {
                         console.log("OTP verified and updated successfully!");
                         navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
@@ -141,7 +142,7 @@ else{
                         console.error("Failed to update OTP state.");
                     }
                 }
-    
+
                 setOtpCorrect(true);
                 setShowOtpInput(false);
             } catch (error) {
@@ -152,8 +153,8 @@ else{
             toast.error("Incorrect OTP");
         }
     };
-    
-    
+
+
 
 
 
@@ -201,7 +202,7 @@ else{
     // };
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         const requestData = {
             CLIENT_NAME: name,
             EMAIL_ADDRESS: mail,
@@ -212,9 +213,9 @@ else{
             COMPANY_ID: 1,
             OTP_STATE: 1
         };
-    
+
         console.log("Sending request:", requestData);
-    
+
         try {
             const response = await fetch("https://apps.hayleysfentons.com/icewarp/API/client.php", {
                 method: "POST",
@@ -224,7 +225,7 @@ else{
                 body: JSON.stringify(requestData),
             });
             navigate(`/reg/${name}/null`);
-            
+
             const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -237,14 +238,14 @@ else{
             // Log the raw response before trying to parse it
             const textResponse = await response.text();
             console.log("Raw Response:", textResponse);
-    
+
             // Attempt to parse JSON
             const result = JSON.parse(textResponse);
-    
+
             if (result.success) {
                 toast.success("Registration successful!");
-                
-    
+
+
                 // Reset form fields
                 setName("");
                 setMail("");
@@ -260,7 +261,7 @@ else{
             // toast.error("An unexpected error occurred. Please try again.");
         }
     };
-    
+
 
     return (
         <div>
@@ -284,8 +285,6 @@ else{
                 <form className="mx-8 pt-8" onSubmit={handleSubmit}>
                     <div className="grid md:grid-cols-2 md:gap-6">
 
-
-
                     </div>
 
                     <div className="relative z-0 w-full mb-5 group flex flex-col gap-x-2">
@@ -298,11 +297,23 @@ else{
                             </div>
                             <input
                                 value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                onChange={(e) => {
+                                    const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                                    if (inputVal.length <= 10) {
+                                        setPhoneNumber(inputVal);
+                                    }
+                                }}
                                 required
                                 disabled={otpSent}
-                                type="text" id="zip-input" aria-describedby="helper-text-explanation"
-                                class=" w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-800 focus:border-purring-purple-800 block ps-16 p-2.5  " placeholder="7X XXX XXXX" pattern="^\d{5}(-\d{4})?$" />
+                                type="number"
+                                id="zip-input"
+                                aria-describedby="helper-text-explanation"
+                                className="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+               focus:ring-purple-800 focus:border-purple-800 block ps-16 p-2.5"
+                                placeholder="7X XXX XXXX"
+                                maxLength={10}
+                                pattern="^\d{10}$"
+                            />
 
                             {otpCorrect && (
                                 <div className="flex items-center justify-center mt-2 ml-2 z-50 right-2 ">
@@ -346,14 +357,21 @@ else{
                                 <form id="otp-form">
                                     <div class="flex items-center justify-center gap-3">
                                         <input
-                                            type="text"
-                                            maxLength={6}
-                                            value={enteredOtp} // Use enteredOtp instead of otp
-                                            onChange={(e) => setEnteredOtp(e.target.value)}
+                                            type="text" // Changed from "number" to "text"
+                                            value={enteredOtp}
+                                            onChange={(e) => {
+                                                const inputVal = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                                                if (inputVal.length <= 6) {
+                                                    setEnteredOtp(inputVal);
+                                                }
+                                            }}
                                             className="border w-4/5 p-2 rounded border-gray-300 focus:ring-[#791c97] focus:ring-0"
                                             placeholder="Enter OTP"
+                                            maxLength={6} // Restricts input to 6 characters
+                                            pattern="^\d{6}$"
                                             required
                                         />
+
                                     </div>
                                     <div class="max-w-[260px] mx-auto mt-4">
                                         <button type="submit"
