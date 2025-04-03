@@ -1,4 +1,16 @@
+/* Customize the toast icon */
+.Toastify__toast-icon {
+  margin-inline-end: 12px; /* Adjust spacing as needed */
+  width: 20px; /* Change the icon size */
+}
 
+/* Customize the toast container */
+.Toastify__toast {
+  min-height: 1px; /* Adjust the height */
+}
+.Toastify__toast-body{
+  display: flex;
+}
 
 /* menu css */
 :root {
