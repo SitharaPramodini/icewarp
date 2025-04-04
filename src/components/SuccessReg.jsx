@@ -7,8 +7,8 @@ const SuccessReg = () => {
   return (
     <div className=''>
       <div className='m-4 rounded-full'>
-        <h1 className="keyboard text-center text-[30px] mt-12">Hello {CLIENT_NAME}!</h1>
-        <h1 className="mb-4 text-center text-2xl font-medium text-gray-500 font-sans mt-4">
+        <h1 className="keyboard text-center md:text-[30px] text-[27px] mt-12">Hello {CLIENT_NAME}!</h1>
+        <h1 className="mb-4 text-center md:text-2xl text-xl font-medium text-gray-500 font-sans mt-4">
           Welcome to Icewarp event
         </h1>
 
@@ -25,7 +25,7 @@ const SuccessReg = () => {
           </h1>
         )} */}
 
-        <p className='text-center text-gray-500 mt-12 font-sans text-xl'>
+        <p className='text-center text-gray-500 mt-12 font-sans md:text-xl text-lg'>
           Please follow us to receive the door gift
           <div className="flex justify-center">
             <a href='https://www.linkedin.com/company/fentons-information-technology/posts/?feedView=all'>
