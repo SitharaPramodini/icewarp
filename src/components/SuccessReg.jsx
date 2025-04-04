@@ -6,15 +6,15 @@ import { FaLinkedin } from "react-icons/fa";
 const SuccessReg = () => {
   const { CLIENT_NAME, TABLE_NUMBER } = useParams(); // Destructure useParams
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     navigate("/");
-  //   }, 4000); 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/");
+    }, 4000); 
 
-  //   return () => clearTimeout(timer); // cleanup
-  // }, [navigate]);
+    return () => clearTimeout(timer); // cleanup
+  }, [navigate]);
 
 
   return (
