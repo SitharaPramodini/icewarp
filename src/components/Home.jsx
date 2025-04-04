@@ -133,14 +133,25 @@ function Home() {
                         console.log("OTP verified and updated successfully!");
                         navigate(`/reg/${encodeURIComponent(data.data.CLIENT_NAME)}/${encodeURIComponent(data.data.TABLE_NUMBER)}`);
 
-                        const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                mobile: phoneNumber,
-                                message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nYour table number is ${data.data.TABLE_NUMBER}`,
-                            }),
-                        });
+                        if(data.data.TABLE_NUMBER !== "null"){
+                            const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    mobile: phoneNumber,
+                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nYour table number is ${data.data.TABLE_NUMBER}`,
+                                }),
+                            });
+                        } else {
+                            const responseMsg = await fetch("https://demo.secretary.lk/sendSMSAPI/sendSMS.php", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({
+                                    mobile: phoneNumber,
+                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\nSit with your colleague`,
+                                }),
+                            });
+                        }
 
                     } else {
                         console.error("Failed to update OTP state.");
