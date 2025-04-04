@@ -25,7 +25,7 @@ const SuccessReg = () => {
           </h1>
         )} */}
 
-        <p className='text-center text-gray-500 mt-12 font-sans md:text-xl text-lg'>
+        <p className='text-center text-gray-500 mt-12 font-sans md:text-xl text-sm'>
           Please follow us to receive the door gift
           <div className="flex justify-center">
             <a href='https://www.linkedin.com/company/fentons-information-technology/posts/?feedView=all'>
