@@ -139,7 +139,7 @@ function Home() {
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({
                                     mobile: phoneNumber,
-                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.`,
+                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nFentons IT`,
                                 }),
                             });
                         } else {
@@ -148,7 +148,7 @@ function Home() {
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify({
                                     mobile: phoneNumber,
-                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.`,
+                                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nFentons IT`,
                                 }),
                             });
                         }
@@ -246,7 +246,7 @@ function Home() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     mobile: phoneNumber,
-                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.`,
+                    message: `Thank you for your participation. We look forward to future opportunities to collaborate with you.\n\nFentons IT`,
                 }),
             });
 
