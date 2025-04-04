@@ -9,7 +9,7 @@ const SuccessReg = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/");
-    }, 10000); 
+    }, 4000); 
 
     return () => clearTimeout(timer); // cleanup
   }, [navigate]);
