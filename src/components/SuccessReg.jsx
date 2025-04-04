@@ -1,8 +1,19 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const SuccessReg = () => {
   const { CLIENT_NAME, TABLE_NUMBER } = useParams(); // Destructure useParams
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/");
+    }, 10000); 
+
+    return () => clearTimeout(timer); // cleanup
+  }, [navigate]);
+
 
   return (
     <div className=''>

@@ -9,7 +9,7 @@ function Header() {
 <img src="/icewarp.jpg" className="block md:hidden mx-auto w-full" alt="Logo" />
 
 {/* Show on md and larger only */}
-<img src="/icewarp1.png" className="hidden md:block mx-auto w-full" alt="Logo" />
+<img src="/icewarp2.jpg" className="hidden md:block mx-auto w-full" alt="Logo" />
 
         {/* <img src="/icewarpCircle.jpg" className="mx-auto " alt="Flowbite Logo" /> */}
 
