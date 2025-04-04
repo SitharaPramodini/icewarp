@@ -8,24 +8,24 @@ const SuccessReg = () => {
     <div className=''>
       <div className='m-4 rounded-full'>
         <h1 className="keyboard text-center text-[30px] mt-12">Hello {CLIENT_NAME}!</h1>
-        <h1 className="mb-4 text-center text-2xl font-medium text-gray-500 font-[Roboto] mt-4">
+        <h1 className="mb-4 text-center text-2xl font-medium text-gray-500 font-sans mt-4">
           Welcome to Icewarp event
         </h1>
 
         <img className='mt-12 mx-auto w-40' src='/icon1.png' alt="icon" />
         <img className=' mx-auto md:w-72' src='/success.gif' alt="Success" />
 
-        {TABLE_NUMBER && TABLE_NUMBER !== "null" ? (
-          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto]">
+        {/* {TABLE_NUMBER && TABLE_NUMBER !== "null" ? (
+          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-sans">
             Your table no: {TABLE_NUMBER}
           </h1>
         ) : (
-          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-[Roboto]">
+          <h1 className="mb-4 text-center text-2xl font-medium text-gray-700 mt-10 font-sans">
             Sit with your colleague
           </h1>
-        )}
+        )} */}
 
-        <p className='text-center text-gray-500 mt-12 font-[Roboto] text-xl'>
+        <p className='text-center text-gray-500 mt-12 font-sans text-xl'>
           Please follow us to receive the door gift
           <div className="flex justify-center">
             <a href='https://www.linkedin.com/company/fentons-information-technology/posts/?feedView=all'>
