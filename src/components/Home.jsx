@@ -65,7 +65,7 @@ function Home() {
         const generatedOtp = generateOtp();
         setOtp(generatedOtp); // Save OTP in state
 
-        // console.log(generatedOtp)
+        console.log("otp : ", generatedOtp)
 
         try {
             const responseStatus = await fetch(`https://apps.hayleysfentons.com/icewarp/API/client.php?MOBILE_NO=${phoneNumber}`);
@@ -280,8 +280,8 @@ function Home() {
                 closeButton={false}
             />
             <div
-                className={`container ${otpSent ? "mt-[18rem]" : "mt-[24rem]"
-                    } max-w-full pt-3 pb-14 bg-[#f8f8ff] w-full absolute rounded-t-3xl h-auto`}
+                className={`container ${otpSent ? "mt-[18rem] md:mt-[3rem]" : "mt-[24rem] md:mt-[10rem]"
+                    } md:w-[40%] md:mx-[30%] md:rounded-3xl max-w-full pt-3 pb-14 bg-[#f8f8ff] w-full absolute rounded-t-3xl h-auto`}
             >
                 {!otpCorrect && (
                     <h1 class="keyboard text-center mt-[10px] text-[35px]">Ready to explore?</h1>
